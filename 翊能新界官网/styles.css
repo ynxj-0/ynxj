@@ -1,0 +1,621 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #000000;
+    color: #fff;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 4rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    background: linear-gradient(to bottom, 
+        rgba(0, 0, 0, 0.98),
+        rgba(0, 0, 0, 0.85)
+    );
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+    margin-right: 3.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.logo img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 0 10px;
+    margin: 0 20px;
+}
+
+.nav-links::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+    opacity: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 15px;
+    position: relative;
+    white-space: nowrap;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 15px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateX(-50%);
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.nav-links a:hover::after {
+    width: 60%;
+    opacity: 1;
+}
+
+.nav-links a:hover ~ .nav-links::before {
+    opacity: 1;
+}
+
+.nav-links a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+.nav-links a.active::after {
+    width: 60%;
+    opacity: 1;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.shop-btn {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.menu-btn span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px 0;
+}
+
+footer {
+    padding: 2rem 3rem;
+    background-color: #000;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    font-size: 12px;
+    color: #666;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: #666;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        height: 36px;
+        padding: 0 8px;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .main-nav {
+        padding: 0.6rem 1.8rem;
+    }
+    
+    .logo {
+        margin-right: 1.5rem;
+        padding: 0.4rem 0;
+    }
+    
+    .logo img {
+        height: 45px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+        padding: 5px 12px;
+    }
+    
+    .nav-links::before {
+        height: 28px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .logo img {
+        height: 60px;
+    }
+    
+    .main-nav {
+        padding: 1rem 5rem;
+    }
+    
+    .nav-links {
+        height: 44px;
+        padding: 0 12px;
+    }
+
+    .nav-links a {
+        font-size: 15px;
+        padding: 7px 18px;
+    }
+    
+    .nav-links::before {
+        height: 36px;
+    }
+}
+
+main {
+    min-height: 100vh;
+    padding-top: 80px; /* 为固定导航栏留出空间 */
+    background-color: #000;
+}
+
+/* 可以给不同区块添加微妙的背景区分 */
+section {
+    padding: 4rem 0;
+    background-color: #000000;
+}
+
+section:nth-child(even) {
+    background-color: #000000;
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    padding: 3rem 4rem;
+    background: rgba(0, 0, 0, 0.95);
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 0.5px rgba(255, 255, 255, 0.05);
+}
+
+.hero-content h1 {
+    font-size: 4.2rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    background: linear-gradient(
+        to right,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.9) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.learn-more {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.learn-more:hover {
+    background: #fff;
+    color: #000;
+}
+
+.recent-highlight {
+    padding: 4rem 2rem;
+    background: #111;
+    text-align: center;
+}
+
+.highlight-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.details-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 0.2rem;
+}
+
+.technology-showcase {
+    height: 100vh;
+    position: relative;
+}
+
+.showcase-item {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.showcase-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.showcase-text {
+    text-align: center;
+    z-index: 2;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+}
+
+.showcase-text h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.showcase-text p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+.showcase-text a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 0.2rem;
+}
+
+/* 美化商务合作按钮 */
+.cta-btn {
+    padding: 1rem 2.4rem;  /* 增加内边距 */
+    border-radius: 50px;
+    background: #000000;  /* 保持纯黑背景 */
+    border: 1px solid rgba(255, 255, 255, 0.18);  /* 调整边框透明度 */
+    color: rgba(255, 255, 255, 0.95);  /* 提高文字亮度 */
+    text-decoration: none;
+    font-size: 14.5px;  /* 稍微增加字体大小 */
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;  /* 增加字间距 */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;  /* 改用flex布局 */
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;  /* 设置最小宽度 */
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);  /* 调整内部阴影 */
+}
+
+/* 优化微光效果 */
+.cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),  /* 调整微光亮度 */
+        transparent
+    );
+    transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;  /* 确保微光在文字下方 */
+}
+
+/* 添加文字容器 */
+.cta-btn span {
+    position: relative;
+    z-index: 2;  /* 确保文字在最上层 */
+}
+
+.cta-btn:hover {
+    border-color: rgba(255, 255, 255, 0.3);  /* hover时边框更明显 */
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+    letter-spacing: 2.2px;  /* hover时略微增加字间距 */
+}
+
+/* 优化hover时的微光动画 */
+.cta-btn:hover::before {
+    left: 100%;
+    transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cta-btn:active {
+    transform: translateY(1px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 2px 10px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    transition: 0.2s;
+}
+
+/* AI搜索框样式 */
+.ai-search {
+    display: flex;
+    align-items: center;
+    margin-right: 1.5rem;
+    position: relative;
+}
+
+/* 修改输入框样式 */
+.ai-input {
+    width: 200px;
+    height: 40px;
+    padding: 0 40px 0 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 14px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 输入框焦点状态 */
+.ai-input:focus {
+    width: 300px;  /* 点击时变长 */
+    border-color: rgba(255, 255, 255, 0.25);
+    outline: none;
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* 修改AI触发器样式 */
+.ai-trigger {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #000000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 2px 8px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+/* 当输入框获得焦点时，触发器的位置和大小变化 */
+.ai-input:focus ~ .ai-trigger {
+    transform: scale(1.2) translateX(-10px);  /* 减小放大比例从1.5改为1.2，同时调整位移 */
+}
+
+/* 点击触发器时的效果（增加放大比例） */
+.ai-trigger:active {
+    transform: scale(1.8);  /* 从1.5改为1.8 */
+    background: #0a0a0a;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.25),
+        0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* 当输入框获得焦点且触发器被点击时也保持不变 */
+.ai-input:focus ~ .ai-trigger:active {
+    transform: scale(1.2) translateX(-10px);  /* 保持不变 */
+}
+
+/* 修改活动指示灯位置 */
+.ai-trigger::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: #1afe49;
+    border-radius: 50%;
+    left: 10px;
+    opacity: 0.9;
+    box-shadow: 0 0 8px #1afe49;
+    animation: pulse 2s infinite;
+}
+
+/* 修改图标样式 */
+.ai-icon {
+    width: 20px;
+    height: 20px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-left: 6px;
+    fill: none;
+    stroke: white;
+    opacity: 0.9;
+}
+
+/* 悬浮效果 */
+.ai-trigger:hover {
+    transform: scale(1.05);
+    background: #0a0a0a;
+    box-shadow: 
+        0 0 0 1px rgba(255, 255, 255, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.ai-trigger:hover .ai-icon {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .ai-input {
+        width: 160px;
+    }
+    
+    .ai-input:focus {
+        width: 240px;
+    }
+    
+    .ai-input:focus ~ .ai-trigger {
+        transform: scale(1.1) translateX(-8px);  /* 移动端更小的放大比例 */
+    }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1440px) {
+    .ai-input {
+        width: 250px;
+    }
+    
+    .ai-input:focus {
+        width: 350px;
+    }
+    
+    .ai-input:focus ~ .ai-trigger {
+        transform: scale(1.2) translateX(-12px);  /* 大屏幕保持一致的放大比例 */
+    }
+}
+
+/* 活动指示灯动画 */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+} 
